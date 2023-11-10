@@ -1,5 +1,5 @@
 # Step 1: Use a more recent Node.js version that's compatible with Angular 14
-FROM node:16
+FROM node:latest
 
 # Step 2: Set the working directory in the container
 WORKDIR /usr/src/app
@@ -8,6 +8,8 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Step 4: Install project dependencies
+RUN npm install -g @angular/cli
+
 RUN npm install --legacy-peer-deps
 
 # Step 5: Copy the rest of your app's source code
