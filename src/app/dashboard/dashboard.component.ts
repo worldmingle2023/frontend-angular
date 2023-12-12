@@ -79,7 +79,17 @@ export class DashboardComponent implements OnInit {
           console.error('Error fetching data: ', error);
         }
       );
-      
+
+      this.myService.getPostsData().subscribe(
+        (response) => {
+          console.log(response);
+          this.data = response;
+        },
+        (error) => {
+          console.error('Error fetching data: ', error);
+        }
+      );
+
       const dataDailySalesChart: any = {
           labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
           series: [
