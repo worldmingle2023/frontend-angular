@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import { MyService } from '../core/services/forum-service/forum.service'; // Adjust the path based on your file structure
+
 
 @Component({
   selector: 'app-dashboard',
@@ -7,8 +9,9 @@ import * as Chartist from 'chartist';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  data:any;
 
-  constructor() { }
+  constructor(private myService: MyService) { }
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -67,7 +70,16 @@ export class DashboardComponent implements OnInit {
   };
   ngOnInit() {
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
-
+      this.myService.getSomeData().subscribe(
+        (response) => {
+          console.log(response);
+          this.data = response;
+        },
+        (error) => {
+          console.error('Error fetching data: ', error);
+        }
+      );
+      
       const dataDailySalesChart: any = {
           labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
           series: [
