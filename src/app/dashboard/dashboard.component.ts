@@ -10,6 +10,7 @@ import { MyService } from '../core/services/forum-service/forum.service'; // Adj
 })
 export class DashboardComponent implements OnInit {
   data:any;
+  posts: any[] = [];
 
   constructor(private myService: MyService) { }
   startAnimationForLineChart(chart){
@@ -72,7 +73,7 @@ export class DashboardComponent implements OnInit {
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
       this.myService.getSomeData().subscribe(
         (response) => {
-          console.log(response);
+          console.log('response',response);
           this.data = response;
         },
         (error) => {
@@ -89,7 +90,9 @@ export class DashboardComponent implements OnInit {
           console.error('Error fetching data: ', error);
         }
       );
-
+      
+      this.getPosts();
+      
       const dataDailySalesChart: any = {
           labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
           series: [
@@ -167,6 +170,17 @@ export class DashboardComponent implements OnInit {
 
       //start animation for the Emails Subscription Chart
       this.startAnimationForBarChart(websiteViewsChart);
+  }
+
+  getPosts(): void {
+    this.myService.getPostsData().subscribe(
+      (data) => {
+        this.posts = data;
+      },
+      (error) => {
+        console.error('There was an error!', error);
+      }
+    );
   }
 
 }

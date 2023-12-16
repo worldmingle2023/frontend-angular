@@ -1,58 +1,22 @@
 <div class="main-content">
-  <div class="container-fluid">
-      <div class="row">
-          <div class="col-md-4">
-              <div class="card card-chart">
-                  
-                  <div class="card-body">
-                      <h4 class="card-title">post title 1</h4>
-                      <p class="card-category">
-                          post category 1</p>
-                  </div>
-                  <div class="card-footer">
-                      <div class="stats">
-                          post author 1
-                      </div>
-                  </div>
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6" *ngFor="let post of posts">
+            <div class="card card-chart">
+              <div class="card-body">
+                <h4 class="card-title">{{ post.name }}</h4>
+                <p class="card-category">{{ post.content }}</p>
               </div>
-          </div>
-          <div class="col-md-4">
-              <div class="card card-chart">
-                  
-                  <div class="card-body">
-                      <h4 class="card-title">post title 2</h4>
-                      <p class="card-category">post category 2</p>
-                  </div>
-                  <div class="card-footer">
-                      <div class="stats">
-                          post author 2
-                      </div>
-                  </div>
+              <div class="card-footer">
+                <div class="stats">
+                  {{ post.author }}
+                </div>
               </div>
+            </div>
           </div>
-          <div class="col-md-4">
-              <div class="card card-chart">
-                
-                  <div class="card-body">
-                      <h4 class="card-title">post title 3</h4>
-                      <p class="card-category">post category 3</p>
-                  </div>
-                  <div class="card-footer">
-                      <div class="stats">
-                          post author 3
-                      </div>
-                  </div>
-              </div>
-          </div>
+        </div>
       </div>
-      <div class="row">
-          <div class="col-lg-6 col-md-12">
-              
-          </div>
-          <div class="col-lg-6 col-md-12">
-              
-          </div>
-      </div>
-  </div>
+      
+ 
 </div>
 
