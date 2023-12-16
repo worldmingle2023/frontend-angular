@@ -11,6 +11,7 @@ COPY package*.json ./
 RUN npm install -g @angular/cli
 
 RUN npm install --legacy-peer-deps
+RUN npm install bootstrap
 
 # Step 5: Copy the rest of your app's source code
 COPY . .

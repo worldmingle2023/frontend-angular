@@ -20,4 +20,7 @@ export class MyService {
     });
     return this.http.get(`${this.baseUrl}/posts/?code=3ab7ba9f-f998-4358-acb8-ba514a630e68`);
   }
+  getPostById(id: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/posts/${id}`);
+  }
 }
